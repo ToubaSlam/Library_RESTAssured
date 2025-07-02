@@ -1,9 +1,6 @@
 package pojo;
 
 public class CreateUser {
-    private String firstName;
-    private String lastName;
-    private String email;
 
     public String getFirstName() {
         return firstName;
@@ -31,4 +28,8 @@ public class CreateUser {
         this.email = email;
         return this;
     }
+
+    String firstName;
+    String lastName;
+    String email;
 }

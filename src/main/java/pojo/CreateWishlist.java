@@ -1,9 +1,6 @@
 package pojo;
 
 public class CreateWishlist {
-    private String firstName;
-    private String lastName;
-    private String email;
 
     public String getFirstName() {
         return firstName;
@@ -31,4 +28,8 @@ public class CreateWishlist {
         this.email = email;
         return this;
     }
+
+    String firstName;
+    String lastName;
+    String email;
 }

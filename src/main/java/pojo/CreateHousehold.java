@@ -1,7 +1,6 @@
 package pojo;
 
 public class CreateHousehold {
-    private String name;
 
     public String getName() {
         return name;
@@ -11,4 +10,6 @@ public class CreateHousehold {
         this.name = name;
         return this;
     }
+
+    String name;
 }

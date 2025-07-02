@@ -37,12 +37,10 @@ public class TC_Test extends TestBase {
                         .when().post("/books")
                         .then().log().all().assertThat().statusCode(201).extract().response();
 
-        System.out.println("title" + "author" + "isbn" + "releaseDate");
-        System.out.println(response.getTime());
+        
         Assert.assertTrue(response.getTime() < 5000);
         bookID = response.jsonPath().getInt("id");
         String title = response.jsonPath().get("title");
-        System.out.println("book ID: " + bookID);
 
     }
 
@@ -82,12 +80,9 @@ public class TC_Test extends TestBase {
                         .when().post("/books")
                         .then().log().all().assertThat().statusCode(201).extract().response();
 
-        System.out.println("title" + "author" + "isbn" + "releaseDate");
-        System.out.println(response.getTime());
         Assert.assertTrue(response.getTime() < 5000);
         bookID = response.jsonPath().getInt("id");
         String title = response.jsonPath().get("title");
-        System.out.println("book ID: " + bookID);
 
     }
 }

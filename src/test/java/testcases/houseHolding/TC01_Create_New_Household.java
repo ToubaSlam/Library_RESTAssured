@@ -11,8 +11,6 @@ import pojo.CreateHousehold;
 import java.io.File;
 import java.util.Map;
 
-import java.io.File;
-
 import static builder.RequestBuilder.createRequestSpecification;
 import static io.restassured.RestAssured.given;
 import static paths.Paths.HOUSEHOLD_SCHEMA_PATH;
