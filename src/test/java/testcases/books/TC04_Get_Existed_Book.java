@@ -6,28 +6,34 @@ import org.testng.annotations.Test;
 import testcases.TestBase;
 
 import java.io.File;
+import java.util.Map;
 
+import static builder.RequestBuilder.createRequestSpecification;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.lessThan;
 import static paths.Paths.BOOK_SCHEMA_PATH;
+import static util.Enpoint.BOOKS;
 
 public class TC04_Get_Existed_Book extends TestBase {
 
     @Test(priority = 1, description = "Check Get Books working and return response as excpected")
     public void checkGetBooksWorking_P(){
-        Response response = given().log().all()
-                .header("Content-Type", "application/json")
-                .header("g-token", "ROM831ESV")
-                .when().get("/books/" + bookID) // ✅ Use GET and pass the variable
-                .then().log().all()
+        Map<String, String> headers = Map.of(
+                "Content-Type", "application/json",
+                "g-token", "ROM831ESV"
+        );
+        Map<String, String> queryParameters = Map.of();
+
+        Response response = given()
+                .spec(createRequestSpecification(headers, queryParameters))
+                .when().get(BOOKS + bookID) // ✅ Use GET and pass the variable
+                .then()
                 .assertThat().statusCode(200).assertThat()
                 .time(lessThan(2000L))
                 .body("id", equalTo(bookID)) // ✅ Confirm the correct book is returned
                 .body(JsonSchemaValidator.matchesJsonSchema(new File(BOOK_SCHEMA_PATH)))
                 .extract().response();
-        System.out.println("✅ [TC00] Response statusCode matches the expected statusCode \"201\"");
-        System.out.println("✅ [TC01] Response matches the expected JSON schema");
     }
 
 

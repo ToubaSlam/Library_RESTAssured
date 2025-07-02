@@ -4,18 +4,26 @@ import io.restassured.response.Response;
 import org.testng.annotations.Test;
 import testcases.TestBase;
 
+import java.util.Map;
+import static builder.RequestBuilder.createRequestSpecification;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.lessThan;
+import static util.Enpoint.BOOKS;
 
 public class TC08_Get_A_Book extends TestBase {
 
     @Test(priority = 1, description = "Check that GET after DELETE returns 404 Not Found for deleted book")
     public void checkGetBooksWorking_P(){
-        Response response = given().log().all()
-                .header("Content-Type", "application/json")
-                .header("g-token", "ROM831ESV")
-                .when().get("/books/" + bookID) // ✅ Use GET and pass the variable
-                .then().log().all()
+        Map<String, String> headers = Map.of(
+                "Content-Type", "application/json",
+                "g-token", "ROM831ESV"
+        );
+        Map<String, String> queryParameters = Map.of();
+
+        Response response = given()
+                .spec(createRequestSpecification(headers, queryParameters))
+                .when().get(BOOKS + bookID) // ✅ Use GET and pass the variable
+                .then()
                 .assertThat().statusCode(404).assertThat()
                 .time(lessThan(2000L))
                 .extract().response();
@@ -27,10 +35,7 @@ public class TC08_Get_A_Book extends TestBase {
         // ✅ Optional: schema validation if your 404 error has a defined schema
         // .body(matchesJsonSchemaInClasspath("error-schema.json"));
 
-        // 📘 Logging
-        System.out.println("✅ [TC08] Status code is 404 - book was successfully deleted");
-        System.out.println("✅ [TC08] Response time is under 2 seconds");
-        System.out.println("✅ [TC08] Book with ID " + bookID + " no longer exists in the system");
+        // Optional logging if needed
     }
 
 }

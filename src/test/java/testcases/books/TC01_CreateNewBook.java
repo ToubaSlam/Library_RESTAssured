@@ -75,7 +75,5 @@ public class TC01_CreateNewBook extends TestBase {
 
         Assert.assertNotNull(response.jsonPath().getString("createdAt"), "createdAt should not be null");
         Assert.assertNotNull(response.jsonPath().getString("updatedAt"), "updatedAt should not be null");
-
-        System.out.println("✅ Book created successfully. ID: " + bookID);
     }
 }
