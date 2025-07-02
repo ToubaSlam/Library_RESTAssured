@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="3" preserve-order="true" name="D:/Course/APIs Course/RestAssured_Library/RestAssured_Library">
+        <classes>
+            <class name="testcases.books.TC01_CreateNewBook">
+                <methods>
+                    <include name="createNewBook_P"/>
+                </methods>
+            </class>
+            <class name="testcases.books.TC02_Get_A_Book">
+                <methods>
+                    <include name="checkGetBooksWorking_P"/>
+                </methods>
+            </class>
+            <class name="testcases.books.TC03_Update_Existing_Book">
+                <methods>
+                    <include name="updateExistingBook_P"/>
+                </methods>
+            </class>
+            <class name="testcases.books.TC04_Get_Existed_Book">
+                <methods>
+                    <include name="checkGetBooksWorking_P"/>
+                </methods>
+            </class>
+            <class name="testcases.books.TC05_Partial_Update_A_Book">
+                <methods>
+                    <include name="partialUpdateExistingBook_P"/>
+                </methods>
+            </class>
+            <class name="testcases.books.TC06_Get_Existed_Book">
+                <methods>
+                    <include name="checkGetBooksWorking_P"/>
+                </methods>
+            </class>
+            <class name="testcases.books.TC07_Delete_A_Book">
+                <methods>
+                    <include name="deleteExistedBook"/>
+                </methods>
+            </class>
+            <class name="testcases.books.TC08_Get_A_Book">
+                <methods>
+                    <include name="checkGetBooksWorking_P"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

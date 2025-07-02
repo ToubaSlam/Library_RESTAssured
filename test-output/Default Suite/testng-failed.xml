@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Default Suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="RestAssured_Library(failed)">
+    <classes>
+      <class name="testcases.books.TC05_Partial_Update_A_Book">
+        <methods>
+          <include name="partialUpdateExistingBook_P"/>
+          <include name="setBaseUrl"/>
+        </methods>
+      </class> <!-- testcases.books.TC05_Partial_Update_A_Book -->
+    </classes>
+  </test> <!-- RestAssured_Library(failed) -->
+</suite> <!-- Failed suite [Default Suite] -->

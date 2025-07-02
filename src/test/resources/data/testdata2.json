@@ -1,0 +1,16 @@
+{
+  "firstName": "John",
+  "lastName": "Kennedy",
+  "users": [
+    {
+      "username": "abc",
+      "password": "Hyderabad",
+      "state": "TL"
+    },
+    {
+      "username": "xyz",
+      "password": "Chennai",
+      "state": "TN"
+    }
+  ]
+}

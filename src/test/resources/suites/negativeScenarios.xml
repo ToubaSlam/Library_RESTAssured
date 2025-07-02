@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <parameter name="baseURL" value="https://fakestoreapi.com"/>
+    
+    <test verbose="2" preserve-order="true" name="C:/Users/mahmoud.abdelreheem/IdeaProjects/FakeStore">
+        <classes>
+            <class name="testcases.auth.TC01_Login">
+                <methods>
+                    <exclude name="CheckLoginWithValidData_P"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

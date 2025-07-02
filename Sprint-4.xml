@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Books Sequential Suite" verbose="2" preserve-order="true">
+
+    <parameter name="env" value="http://localhost:3000/"/>
+
+    <test name="Full Book Lifecycle Test">
+        <classes>
+            <class name="testcases.books.TC01_CreateNewBook"/>
+            <class name="testcases.books.TC02_Get_A_Book"/>
+            <class name="testcases.books.TC03_Update_Existing_Book"/>
+            <class name="testcases.books.TC05_Partial_Update_A_Book"/>
+            <class name="testcases.books.TC07_Delete_A_Book"/>
+        </classes>
+    </test>
+
+</suite>
