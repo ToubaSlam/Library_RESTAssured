@@ -44,6 +44,78 @@
                     <include name="getDeltedBook_P"/>
                 </methods>
             </class>
+            <class name="testcases.houseHolding.TC01_Create_New_Household">
+                <methods><include name="createNewBook_P"/></methods>
+            </class>
+            <class name="testcases.houseHolding.TC02_Get_A_Household">
+                <methods><include name="checkGetBooksWorking_P"/></methods>
+            </class>
+            <class name="testcases.houseHolding.TC03_Update_Existing_Household">
+                <methods><include name="updateExistingBook_P"/></methods>
+            </class>
+            <class name="testcases.houseHolding.TC02_Get_A_Household">
+                <methods><include name="getUpdatedBook_P"/></methods>
+            </class>
+            <class name="testcases.houseHolding.TC05_Partial_Update_Existed_Household">
+                <methods><include name="partialUpdateExistingBook_P"/></methods>
+            </class>
+            <class name="testcases.houseHolding.TC02_Get_A_Household">
+                <methods><include name="getPartUpdtdBook_P"/></methods>
+            </class>
+            <class name="testcases.houseHolding.TC07_Delete_A_Household">
+                <methods><include name="deleteExistedBook"/></methods>
+            </class>
+            <class name="testcases.houseHolding.TC02_Get_A_Household">
+                <methods><include name="getDeltedBook_P"/></methods>
+            </class>
+            <class name="testcases.users.TC01_Create_New_User">
+                <methods><include name="createNewBook_P"/></methods>
+            </class>
+            <class name="testcases.users.TC02_Get_A_User">
+                <methods><include name="checkGetBooksWorking_P"/></methods>
+            </class>
+            <class name="testcases.users.TC03_Update_Existing_User">
+                <methods><include name="updateExistingBook_P"/></methods>
+            </class>
+            <class name="testcases.users.TC02_Get_A_User">
+                <methods><include name="getUpdatedBook_P"/></methods>
+            </class>
+            <class name="testcases.users.TC05_Partial_Update_Existed_User">
+                <methods><include name="partialUpdateExistingBook_P"/></methods>
+            </class>
+            <class name="testcases.users.TC02_Get_A_User">
+                <methods><include name="getPartUpdtdBook_P"/></methods>
+            </class>
+            <class name="testcases.users.TC07_Delete_A_User">
+                <methods><include name="deleteExistedBook"/></methods>
+            </class>
+            <class name="testcases.users.TC02_Get_A_User">
+                <methods><include name="getDeltedBook_P"/></methods>
+            </class>
+            <class name="testcases.wishList.TC01_Create_New_Wishlist">
+                <methods><include name="createNewBook_P"/></methods>
+            </class>
+            <class name="testcases.wishList.TC02_Get_A_Wishlist">
+                <methods><include name="checkGetBooksWorking_P"/></methods>
+            </class>
+            <class name="testcases.wishList.TC03_Update_Existing_Wishlist">
+                <methods><include name="updateExistingBook_P"/></methods>
+            </class>
+            <class name="testcases.wishList.TC02_Get_A_Wishlist">
+                <methods><include name="getUpdatedBook_P"/></methods>
+            </class>
+            <class name="testcases.wishList.TC05_Partial_Update_Existed_Wishlist">
+                <methods><include name="partialUpdateExistingBook_P"/></methods>
+            </class>
+            <class name="testcases.wishList.TC02_Get_A_Wishlist">
+                <methods><include name="getPartUpdtdBook_P"/></methods>
+            </class>
+            <class name="testcases.wishList.TC07_Delete_A_Wishlist">
+                <methods><include name="deleteExistedBook"/></methods>
+            </class>
+            <class name="testcases.wishList.TC02_Get_A_Wishlist">
+                <methods><include name="getDeltedBook_P"/></methods>
+            </class>
         </classes>
     </test>
 </suite>
