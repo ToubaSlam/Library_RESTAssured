@@ -19,7 +19,7 @@ public class TC03_Update_Existing_Household extends TestBase {
     String title = generateRandomTitle();
     String author = generateRandomAuthor();
 
-    @Test(priority = 1, dependsOnMethods = {"testcases.Books.TC01_CreateNewBook.createNewBook_P"}, description = "update existed book with valid data")
+    @Test(priority = 1, dependsOnMethods = {"testcases.books.TC01_CreateNewBook.TC01_createNewBook_ShouldReturnValidResponse_P"}, description = "update existed book with valid data")
 
     public void updateExistingBook_P() {
         Response response = given().log().all()
