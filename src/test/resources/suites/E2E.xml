@@ -5,26 +5,39 @@
     <parameter name="env" value="http://localhost:3000/"/>
     <test verbose="2" preserve-order="true" name="Full Book Lifecycle Test">
         <classes>
+            <class name="testcases.TC_Test"/>
             <class name="testcases.books.TC01_CreateNewBook"/>
             <class name="testcases.books.TC02_Get_A_Book"/>
             <class name="testcases.books.TC03_Update_Existing_Book"/>
+            <class name="testcases.books.TC04_Get_Existed_Book"/>
             <class name="testcases.books.TC05_Partial_Update_A_Book"/>
+            <class name="testcases.books.TC06_Get_Existed_Book"/>
             <class name="testcases.books.TC07_Delete_A_Book"/>
+            <class name="testcases.books.TC08_Get_A_Book"/>
             <class name="testcases.houseHolding.TC01_Create_New_Household"/>
             <class name="testcases.houseHolding.TC02_Get_A_Household"/>
             <class name="testcases.houseHolding.TC03_Update_Existing_Household"/>
+            <class name="testcases.houseHolding.TC04_Get_Existed_Household"/>
             <class name="testcases.houseHolding.TC05_Partial_Update_Existed_Household"/>
+            <class name="testcases.houseHolding.TC06_Get_A_Household"/>
             <class name="testcases.houseHolding.TC07_Delete_A_Household"/>
+            <class name="testcases.houseHolding.TC08_Get_A_Household"/>
             <class name="testcases.users.TC01_Create_New_User"/>
             <class name="testcases.users.TC02_Get_A_User"/>
             <class name="testcases.users.TC03_Update_Existing_User"/>
+            <class name="testcases.users.TC04_Get_Existed_User"/>
             <class name="testcases.users.TC05_Partial_Update_Existed_User"/>
+            <class name="testcases.users.TC06_Get_A_User"/>
             <class name="testcases.users.TC07_Delete_A_User"/>
+            <class name="testcases.users.TC08_Get_A_User"/>
             <class name="testcases.wishList.TC01_Create_New_Wishlist"/>
             <class name="testcases.wishList.TC02_Get_A_Wishlist"/>
             <class name="testcases.wishList.TC03_Update_Existing_Wishlist"/>
+            <class name="testcases.wishList.TC04_Get_Existed_Wishlist"/>
             <class name="testcases.wishList.TC05_Partial_Update_Existed_Wishlist"/>
+            <class name="testcases.wishList.TC06_Get_A_Wishlist"/>
             <class name="testcases.wishList.TC07_Delete_A_Wishlist"/>
+            <class name="testcases.wishList.TC08_Get_A_Wishlist"/>
         </classes>
     </test>
 
