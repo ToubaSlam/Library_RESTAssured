@@ -10,26 +10,25 @@ import io.restassured.module.jsv.JsonSchemaValidator;
 import java.io.File;
 import static paths.Paths.USER_SCHEMA_PATH;
 import static util.Enpoint.USERS;
-import static model.CreateBookBody.getCreateBookBody;
+import static model.CreateBookBody.getCreateUserBody;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.Matchers.lessThan;
 import static util.Utililty.*;
 
 public class TC03_Update_Existing_User extends TestBase {
 
-    String isbn = generateRandomIsbn();
-    String releaseDate = generateRandomPastDate();
-    String title = generateRandomTitle();
-    String author = generateRandomAuthor();
+    String firstName = getRandomFirstName();
+    String lastName = generateRandomLastName();
+    String email = generateRandomEmail("example.com", "");
 
-    @Test(priority = 1, dependsOnMethods = {"testcases.users.TC01_Create_New_User.createNewBook_P"}, description = "update existed book with valid data")
+    @Test(priority = 1, dependsOnMethods = {"testcases.users.TC01_Create_New_User.createNewBook_P"}, description = "update existed user with valid data")
 
     public void updateExistingBook_P() {
         Response response = given().log().all()
                 .auth().preemptive().basic("admin","admin")
                 .header("Content-Type", "application/json")
                 .header("g-token", "ROM831ESV")
-                .body(getCreateBookBody(title, author, isbn, releaseDate))
+                .body(getCreateUserBody(firstName, lastName, email))
                 .when().put(USERS + bookID)
                 .then().log().all()
                 .assertThat().statusCode(200).assertThat()
@@ -45,35 +44,29 @@ public class TC03_Update_Existing_User extends TestBase {
         Assert.assertTrue(responseTime < 5000, "Response time should be < 5000ms, but was: " + responseTime);
 
         TestBase.bookID = response.jsonPath().getInt("id");
-        Assert.assertNotNull(bookID, "Book ID should not be null");
+        Assert.assertNotNull(bookID, "User ID should not be null");
         System.out.println("✅ [TC03] Validate response body contains a non-null 'id'");
 
-        Assert.assertTrue(bookID > 0, "Book ID should be a positive number");
+        Assert.assertTrue(bookID > 0, "User ID should be a positive number");
         System.out.println("✅ [TC04] Validate 'id' is a number and positive");
 
-        String actualTitle = response.jsonPath().getString("title");
-        Assert.assertNotNull(actualTitle, "Title should not be null");
-        Assert.assertFalse(actualTitle.isEmpty(), "Title should not be empty");
-        Assert.assertEquals(actualTitle, title, "Title should match the request");
-        System.out.println("✅ [TC09] Validate 'title' is not null, not empty, and matches the input");
+        String actualFirstName = response.jsonPath().getString("firstName");
+        Assert.assertNotNull(actualFirstName, "firstName should not be null");
+        Assert.assertFalse(actualFirstName.isEmpty(), "firstName should not be empty");
+        Assert.assertEquals(actualFirstName, firstName, "firstName should match the request");
+        System.out.println("✅ [TC09] Validate 'firstName' is not null, not empty, and matches the input");
 
-        String actualAuthor = response.jsonPath().getString("author");
-        Assert.assertNotNull(actualAuthor, "Author should not be null");
-        Assert.assertFalse(actualAuthor.isEmpty(), "Author should not be empty");
-        Assert.assertEquals(actualAuthor, author, "Author should match the request");
-        System.out.println("✅ [TC10] Validate 'author' is not null, not empty, and matches the input");
+        String actualLastName = response.jsonPath().getString("lastName");
+        Assert.assertNotNull(actualLastName, "lastName should not be null");
+        Assert.assertFalse(actualLastName.isEmpty(), "lastName should not be empty");
+        Assert.assertEquals(actualLastName, lastName, "lastName should match the request");
+        System.out.println("✅ [TC10] Validate 'lastName' is not null, not empty, and matches the input");
 
-        String actualIsbn = response.jsonPath().getString("isbn");
-        Assert.assertNotNull(actualIsbn, "ISBN should not be null");
-        Assert.assertFalse(actualIsbn.isEmpty(), "ISBN should not be empty");
-        Assert.assertEquals(actualIsbn, isbn, "ISBN should match the request");
-        System.out.println("✅ [TC11] Validate 'isbn' is not null, not empty, and matches the input");
-
-        String actualReleaseDate = response.jsonPath().getString("releaseDate");
-        Assert.assertNotNull(actualReleaseDate, "ReleaseDate should not be null");
-        Assert.assertFalse(actualReleaseDate.isEmpty(), "ReleaseDate should not be empty");
-        Assert.assertEquals(actualReleaseDate, releaseDate, "ReleaseDate should match the request");
-        System.out.println("✅ [TC12] Validate 'releaseDate' is not null, not empty, and matches the input");
+        String actualEmail = response.jsonPath().getString("email");
+        Assert.assertNotNull(actualEmail, "email should not be null");
+        Assert.assertFalse(actualEmail.isEmpty(), "email should not be empty");
+        Assert.assertEquals(actualEmail, email, "email should match the request");
+        System.out.println("✅ [TC11] Validate 'email' is not null, not empty, and matches the input");
 
         String createdAt = response.jsonPath().getString("createdAt");
         Assert.assertNotNull(createdAt, "createdAt should not be null or empty");
@@ -85,7 +78,7 @@ public class TC03_Update_Existing_User extends TestBase {
         Assert.assertFalse(updatedAt.isEmpty(), "updatedAt should not be empty");
         System.out.println("✅ [TC14] Validate 'updatedAt' is not null or empty");
 
-        System.out.println("✅ All assertions passed. Book ID: " + bookID);
+        System.out.println("✅ All assertions passed. User ID: " + bookID);
     }
 
 }
