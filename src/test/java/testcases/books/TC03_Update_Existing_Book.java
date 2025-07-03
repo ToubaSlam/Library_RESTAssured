@@ -25,7 +25,7 @@ public class TC03_Update_Existing_Book extends TestBase {
     String title = generateRandomTitle();
     String author = generateRandomAuthor();
 
-    @Test(dependsOnMethods = {"testcases.books.TC01_CreateNewBook.createNewBook_P"})
+    @Test(dependsOnMethods = {"testcases.books.TC01_CreateNewBook.TC01_createNewBook_ShouldReturnValidResponse_P"})
 
     public void updateExistingBook_P() throws JsonProcessingException {
         CreateBook book = new CreateBook()
