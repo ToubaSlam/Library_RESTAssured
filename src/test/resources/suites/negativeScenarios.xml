@@ -3,13 +3,12 @@
 <suite name="All Test Suite">
     <parameter name="baseURL" value="https://fakestoreapi.com"/>
     
-    <test verbose="2" preserve-order="true" name="C:/Users/mahmoud.abdelreheem/IdeaProjects/FakeStore">
+    <test verbose="2" preserve-order="true" name="Negative Tests">
         <classes>
-            <class name="testcases.auth.TC01_Login">
-                <methods>
-                    <exclude name="CheckLoginWithValidData_P"/>
-                </methods>
-            </class>
+            <class name="testcases.books.TC09_CreateNewBook_NegativeData"/>
+            <class name="testcases.houseHolding.TC09_CreateNewHousehold_NegativeData"/>
+            <class name="testcases.users.TC09_CreateNewUser_NegativeData"/>
+            <class name="testcases.wishList.TC09_CreateNewWishlist_NegativeData"/>
         </classes>
     </test>
 </suite>
