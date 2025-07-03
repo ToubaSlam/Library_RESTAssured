@@ -9,6 +9,7 @@ import static io.restassured.RestAssured.given;
 import static model.CreateBookBody.getCreateBookBody;
 import static org.hamcrest.Matchers.lessThan;
 import static util.Utililty.*;
+import static util.Enpoint.HOUSEHOLDS;
 
 public class TC07_Delete_A_Household extends TestBase {
 
@@ -25,7 +26,7 @@ public class TC07_Delete_A_Household extends TestBase {
                 .header("g-token", "ROM831ESV")
                 .auth().preemptive().basic("admin","admin")
                 .body(getCreateBookBody(title, author, isbn, releaseDate))
-                .when().delete("/books/" + bookID)
+                .when().delete(HOUSEHOLDS + bookID)
                 .then().log().all()
                 .assertThat().statusCode(204).assertThat()
                 .time(lessThan(2000L))

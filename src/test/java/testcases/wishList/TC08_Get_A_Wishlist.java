@@ -6,6 +6,7 @@ import testcases.TestBase;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.lessThan;
+import static util.Enpoint.WISHLISTS;
 
 public class TC08_Get_A_Wishlist extends TestBase {
 
@@ -14,7 +15,7 @@ public class TC08_Get_A_Wishlist extends TestBase {
         Response response = given().log().all()
                 .header("Content-Type", "application/json")
                 .header("g-token", "ROM831ESV")
-                .when().get("/books/" + bookID) // ✅ Use GET and pass the variable
+                .when().get(WISHLISTS + bookID)
                 .then().log().all()
                 .assertThat().statusCode(404).assertThat()
                 .time(lessThan(2000L))

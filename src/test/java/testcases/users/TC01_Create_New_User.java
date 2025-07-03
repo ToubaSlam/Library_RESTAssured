@@ -6,7 +6,10 @@ import org.testng.annotations.Test;
 import testcases.TestBase;
 
 import static io.restassured.RestAssured.given;
-import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
+import io.restassured.module.jsv.JsonSchemaValidator;
+import java.io.File;
+import static paths.Paths.USER_SCHEMA_PATH;
+import static util.Enpoint.USERS;
 import static model.CreateBookBody.getCreateBookBody;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.Matchers.lessThan;
@@ -26,12 +29,12 @@ public class TC01_Create_New_User extends TestBase {
                 .header("Content-Type", "application/json")
                 .header("g-token", "ROM831ESV")
                 .body(getCreateBookBody(title, author, isbn, releaseDate))
-                .when().post("/books")
+                .when().post(USERS)
                 .then().log().all()
                 .assertThat().statusCode(201).assertThat()
                 .time(lessThan(2000L))
                 .body("id", notNullValue())
-                .body(matchesJsonSchemaInClasspath("schema/book-schema.json"))
+                .body(JsonSchemaValidator.matchesJsonSchema(new File(USER_SCHEMA_PATH)))
                 .extract().response();
         System.out.println("✅ [TC00] Response statusCode matches the expected statusCode \"201\"");
         System.out.println("✅ [TC01] Response matches the expected JSON schema");
