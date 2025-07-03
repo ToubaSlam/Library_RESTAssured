@@ -10,26 +10,23 @@ import io.restassured.module.jsv.JsonSchemaValidator;
 import java.io.File;
 import static paths.Paths.HOUSEHOLD_SCHEMA_PATH;
 import static util.Enpoint.HOUSEHOLDS;
-import static model.CreateBookBody.getCreateBookBody;
+import static model.CreateBookBody.getCreateHouseholdBody;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.Matchers.lessThan;
 import static util.Utililty.*;
 
 public class TC03_Update_Existing_Household extends TestBase {
 
-    String isbn = generateRandomIsbn();
-    String releaseDate = generateRandomPastDate();
-    String title = generateRandomTitle();
-    String author = generateRandomAuthor();
+    String fullName = generateRandomFullName();
 
-    @Test(priority = 1, dependsOnMethods = {"testcases.houseHolding.TC01_Create_New_Household.createNewBook_P"}, description = "update existed book with valid data")
+    @Test(priority = 1, dependsOnMethods = {"testcases.houseHolding.TC01_Create_New_Household.createNewBook_P"}, description = "update existed household with valid data")
 
     public void updateExistingBook_P() {
         Response response = given().log().all()
                 .auth().preemptive().basic("admin","admin")
                 .header("Content-Type", "application/json")
                 .header("g-token", "ROM831ESV")
-                .body(getCreateBookBody(title, author, isbn, releaseDate))
+                .body(getCreateHouseholdBody(fullName))
                 .when().put(HOUSEHOLDS + bookID)
                 .then().log().all()
                 .assertThat().statusCode(200).assertThat()
@@ -51,29 +48,11 @@ public class TC03_Update_Existing_Household extends TestBase {
         Assert.assertTrue(bookID > 0, "Book ID should be a positive number");
         System.out.println("✅ [TC04] Validate 'id' is a number and positive");
 
-        String actualTitle = response.jsonPath().getString("title");
-        Assert.assertNotNull(actualTitle, "Title should not be null");
-        Assert.assertFalse(actualTitle.isEmpty(), "Title should not be empty");
-        Assert.assertEquals(actualTitle, title, "Title should match the request");
-        System.out.println("✅ [TC09] Validate 'title' is not null, not empty, and matches the input");
-
-        String actualAuthor = response.jsonPath().getString("author");
-        Assert.assertNotNull(actualAuthor, "Author should not be null");
-        Assert.assertFalse(actualAuthor.isEmpty(), "Author should not be empty");
-        Assert.assertEquals(actualAuthor, author, "Author should match the request");
-        System.out.println("✅ [TC10] Validate 'author' is not null, not empty, and matches the input");
-
-        String actualIsbn = response.jsonPath().getString("isbn");
-        Assert.assertNotNull(actualIsbn, "ISBN should not be null");
-        Assert.assertFalse(actualIsbn.isEmpty(), "ISBN should not be empty");
-        Assert.assertEquals(actualIsbn, isbn, "ISBN should match the request");
-        System.out.println("✅ [TC11] Validate 'isbn' is not null, not empty, and matches the input");
-
-        String actualReleaseDate = response.jsonPath().getString("releaseDate");
-        Assert.assertNotNull(actualReleaseDate, "ReleaseDate should not be null");
-        Assert.assertFalse(actualReleaseDate.isEmpty(), "ReleaseDate should not be empty");
-        Assert.assertEquals(actualReleaseDate, releaseDate, "ReleaseDate should match the request");
-        System.out.println("✅ [TC12] Validate 'releaseDate' is not null, not empty, and matches the input");
+        String actualName = response.jsonPath().getString("name");
+        Assert.assertNotNull(actualName, "Name should not be null");
+        Assert.assertFalse(actualName.isEmpty(), "Name should not be empty");
+        Assert.assertEquals(actualName, fullName, "Name should match the request");
+        System.out.println("✅ [TC09] Validate 'name' is not null, not empty, and matches the input");
 
         String createdAt = response.jsonPath().getString("createdAt");
         Assert.assertNotNull(createdAt, "createdAt should not be null or empty");
