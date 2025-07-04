@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2025-07-02T12:24:51 CDT" name="Default Suite" finished-at="2025-07-02T12:25:00 CDT" duration-ms="8362">
+    <groups>
+    </groups>
+    <test started-at="2025-07-02T12:24:51 CDT" name="RestAssured_Library" finished-at="2025-07-02T12:25:00 CDT" duration-ms="8362">
+      <class name="testcases.books.TC01_CreateNewBook">
+        <test-method is-config="true" signature="setBaseUrl()[pri:0, instance:testcases.books.TC01_CreateNewBook@67403656]" started-at="2025-07-02T12:24:51 CDT" name="setBaseUrl" finished-at="2025-07-02T12:24:53 CDT" duration-ms="1348" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setBaseUrl -->
+        <test-method signature="TC01_createNewBook_ShouldReturnValidResponse_P()[pri:1, instance:testcases.books.TC01_CreateNewBook@67403656]" started-at="2025-07-02T12:24:53 CDT" name="TC01_createNewBook_ShouldReturnValidResponse_P" description="TC01 - Create new book with valid data" finished-at="2025-07-02T12:24:59 CDT" duration-ms="6718" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC01_createNewBook_ShouldReturnValidResponse_P -->
+      </class> <!-- testcases.books.TC01_CreateNewBook -->
+    </test> <!-- RestAssured_Library -->
+  </suite> <!-- Default Suite -->
+</testng-results>

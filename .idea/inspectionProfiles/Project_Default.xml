@@ -1,0 +1,41 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="VulnerableLibrariesLocal" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="isIgnoringEnabled" value="true" />
+      <option name="ignoredModules">
+        <list>
+          <option value="RestAssured_Library" />
+        </list>
+      </option>
+      <option name="ignoredPackages">
+        <list>
+          <option value="junit:junit:4.10" />
+        </list>
+      </option>
+      <option name="ignoredReasons">
+        <list>
+          <option value="Not exploitable" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="groupsTestNG" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="groups">
+        <value>
+          <list size="10">
+            <item index="0" class="java.lang.String" itemvalue="create_book" />
+            <item index="1" class="java.lang.String" itemvalue="update_book" />
+            <item index="2" class="java.lang.String" itemvalue="partial_update" />
+            <item index="3" class="java.lang.String" itemvalue="partial_update_book" />
+            <item index="4" class="java.lang.String" itemvalue="delete_book" />
+            <item index="5" class="java.lang.String" itemvalue="tes1" />
+            <item index="6" class="java.lang.String" itemvalue="test1" />
+            <item index="7" class="java.lang.String" itemvalue="test2" />
+            <item index="8" class="java.lang.String" itemvalue="test3" />
+            <item index="9" class="java.lang.String" itemvalue="test4" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>

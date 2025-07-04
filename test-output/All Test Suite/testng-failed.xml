@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [All Test Suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="create book(failed)">
+    <classes>
+      <class name="testcases.books.TC02_Get_A_Book">
+        <methods>
+          <include name="getPartUpdtdBook_P"/>
+          <include name="setBaseUrl"/>
+          <include name="getUpdatedBook_P"/>
+        </methods>
+      </class> <!-- testcases.books.TC02_Get_A_Book -->
+    </classes>
+  </test> <!-- create book(failed) -->
+</suite> <!-- Failed suite [All Test Suite] -->

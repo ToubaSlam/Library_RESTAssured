@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <parameter name="baseURL" value="http://localhost:3000/"/>
+    <listeners>
+        <listener class-name="listeners.Listener"/>
+    </listeners>
+    <listeners>
+        <listener class-name="io.qameta.allure.testng.AllureTestNg" />
+    </listeners>
+
+    <suite-files>
+        <suite-file path="src/test/resources/suites/positiveScenarios.xml"/>
+        <suite-file path="src/test/resources/suites/negativeScenarios.xml"/>
+        <suite-file path="src/test/resources/suites/E2E.xml"/>
+    </suite-files>
+</suite>

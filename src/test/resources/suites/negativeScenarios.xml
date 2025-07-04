@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Negative Scenarios">
+
+    <parameter name="baseURL" value="http://localhost:3000/"/>
+
+    <test verbose="2" preserve-order="true" name="Negative Scenarios">
+        <classes>
+            <class name="testcases.books.TC09_CreateNewBook_NegativeData"/>
+            <class name="testcases.houseHolding.TC09_CreateNewHousehold_NegativeData"/>
+            <class name="testcases.users.TC09_CreateNewUser_NegativeData"/>
+            <class name="testcases.wishList.TC09_CreateNewWishlist_NegativeData"/>
+        </classes>
+    </test>
+</suite>
