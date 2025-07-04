@@ -25,8 +25,8 @@ public class TC01_Create_New_Household extends TestBase {
 
     String fullName = generateRandomFullName();
 
-    @Test(priority = 1, description = "Create new book with valid data")
-    public void createNewBook_P() throws JsonProcessingException {
+    @Test(priority = 1, description = "Create new household with valid data")
+    public void createNewHousehold_P() throws JsonProcessingException {
         CreateHousehold household = new CreateHousehold().setName(fullName);
 
         Map<String, String> headers = Map.of(

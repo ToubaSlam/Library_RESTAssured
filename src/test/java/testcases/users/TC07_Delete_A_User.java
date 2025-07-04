@@ -15,7 +15,7 @@ public class TC07_Delete_A_User extends TestBase {
 
     @Test(priority = 1, description = "Delete existed user")
 
-    public void deleteExistedBook() {
+    public void deleteExistedUser() {
         Response response = given().log().all()
                 .header("Content-Type", "application/json")
                 .header("g-token", "ROM831ESV")

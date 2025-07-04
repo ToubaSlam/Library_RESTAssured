@@ -13,7 +13,7 @@ public class TC07_Delete_A_Household extends TestBase {
 
     @Test(priority = 1, description = "delete existed household")
 
-    public void deleteExistedBook() {
+    public void deleteExistedHousehold() {
         Response response = given().log().all()
                 .header("Content-Type", "application/json")
                 .header("g-token", "ROM831ESV")

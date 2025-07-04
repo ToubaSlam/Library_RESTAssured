@@ -23,7 +23,7 @@ public class TC01_Create_New_User extends TestBase {
 
     @Test(priority = 1, description = "Create new user with valid data")
 
-    public void createNewBook_P() {
+    public void createNewUser_P() {
         Response response = given().log().all()
                 .header("Content-Type", "application/json")
                 .header("g-token", "ROM831ESV")

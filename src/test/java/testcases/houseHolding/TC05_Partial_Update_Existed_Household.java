@@ -21,7 +21,7 @@ public class TC05_Partial_Update_Existed_Household extends TestBase {
 
     @Test(priority = 1, description = "partial update existed household with valid data")
 
-    public void partialUpdateExistingBook_P() {
+    public void partialUpdateExistingHousehold_P() {
         Response response = given().log().all()
                 .header("Content-Type", "application/json")
                 .header("g-token", "ROM831ESV")

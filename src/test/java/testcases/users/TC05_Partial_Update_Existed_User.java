@@ -23,7 +23,7 @@ public class TC05_Partial_Update_Existed_User extends TestBase {
 
     @Test(priority = 1, description = "Partially update existed user with valid data")
 
-    public void partialUpdateExistingBook_P() {
+    public void partialUpdateExistingUser_P() {
         Response response = given().log().all()
                 .header("Content-Type", "application/json")
                 .header("g-token", "ROM831ESV")

@@ -19,9 +19,9 @@ public class TC03_Update_Existing_Household extends TestBase {
 
     String fullName = generateRandomFullName();
 
-    @Test(priority = 1, dependsOnMethods = {"testcases.houseHolding.TC01_Create_New_Household.createNewBook_P"}, description = "update existed household with valid data")
+    @Test(priority = 1, dependsOnMethods = {"testcases.houseHolding.TC01_Create_New_Household.createNewHousehold_P"}, description = "update existed household with valid data")
 
-    public void updateExistingBook_P() {
+    public void updateExistingHousehold_P() {
         Response response = given().log().all()
                 .auth().preemptive().basic("admin","admin")
                 .header("Content-Type", "application/json")

@@ -10,8 +10,8 @@ import static util.Enpoint.HOUSEHOLDS;
 
 public class TC08_Get_A_Household extends TestBase {
 
-    @Test(priority = 1, description = "Check that GET after DELETE returns 404 Not Found for deleted book")
-    public void checkGetBooksWorking_P(){
+    @Test(priority = 1, description = "Check that GET after DELETE returns 404 Not Found for deleted household")
+    public void checkGetHouseholdWorking_P(){
         Response response = given().log().all()
                 .header("Content-Type", "application/json")
                 .header("g-token", "ROM831ESV")

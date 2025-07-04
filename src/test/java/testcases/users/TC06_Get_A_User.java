@@ -14,8 +14,8 @@ import static org.hamcrest.Matchers.lessThan;
 
 public class TC06_Get_A_User extends TestBase {
 
-    @Test(priority = 1, description = "Check Get Books working and return response as excpected")
-    public void checkGetBooksWorking_P(){
+    @Test(priority = 1, description = "Check Get user working and return response as expected")
+    public void checkGetUserWorking_P(){
         Response response = given().log().all()
                 .header("Content-Type", "application/json")
                 .header("g-token", "ROM831ESV")

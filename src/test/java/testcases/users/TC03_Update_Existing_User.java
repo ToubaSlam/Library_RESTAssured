@@ -21,9 +21,9 @@ public class TC03_Update_Existing_User extends TestBase {
     String lastName = generateRandomLastName();
     String email = generateRandomEmail("example.com", "");
 
-    @Test(priority = 1, dependsOnMethods = {"testcases.users.TC01_Create_New_User.createNewBook_P"}, description = "update existed user with valid data")
+    @Test(priority = 1, dependsOnMethods = {"testcases.users.TC01_Create_New_User.createNewUser_P"}, description = "update existed user with valid data")
 
-    public void updateExistingBook_P() {
+    public void updateExistingUser_P() {
         Response response = given().log().all()
                 .auth().preemptive().basic("admin","admin")
                 .header("Content-Type", "application/json")

@@ -10,8 +10,8 @@ import static util.Enpoint.USERS;
 
 public class TC08_Get_A_User extends TestBase {
 
-    @Test(priority = 1, description = "Check that GET after DELETE returns 404 Not Found for deleted book")
-    public void checkGetBooksWorking_P(){
+    @Test(priority = 1, description = "Check that GET after DELETE returns 404 Not Found for deleted user")
+    public void checkGetUserWorking_P(){
         Response response = given().log().all()
                 .header("Content-Type", "application/json")
                 .header("g-token", "ROM831ESV")
