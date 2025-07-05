@@ -1,6 +1,3 @@
-from pathlib import Path
-
-readme_content = """
 # 📚 Library REST API Automation with Rest Assured
 
 This project is a comprehensive API automation testing framework for a fictional **Library Management System**. Built using **REST Assured**, **TestNG**, **Maven**, and integrated with **Allure Reports** and **Jenkins CI/CD**, it demonstrates industry-level practices in API testing.
