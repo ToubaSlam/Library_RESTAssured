@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     tools {
-        maven 'Maven_3.8.5'
-        jdk 'JDK_11'
+        maven 'Maven_3.8.5' // Ensure this matches your configured Maven tool name
+        jdk 'JDK_11'        // Ensure this matches your configured JDK tool name
     }
 
     stages {
@@ -13,15 +13,16 @@ pipeline {
             }
         }
 
+        // Optional: Add a stage to start your local application if needed.
+        // stage('Start Application') {
+        //     steps {
+        //         // Add commands to start your backend service
+        //     }
+        // }
+
         stage('Build & Test') {
             steps {
                 bat 'mvn clean verify -DbaseURL="http://localhost:3000/"'
-            }
-        }
-
-        stage('Generate Allure Report') {
-            steps {
-                bat 'allure generate target/allure-results -o target/allure-report --clean'
             }
         }
     }
