@@ -6,6 +6,10 @@ pipeline {
         jdk 'JDK_11'        // Ensure this matches your configured JDK tool name
     }
 
+    environment {
+        BASE_URL = "http://localhost:3000"
+    }
+
     stages {
         stage('Get Code') {
             steps {
@@ -13,16 +17,16 @@ pipeline {
             }
         }
 
-        // Optional: Add a stage to start your local application if needed.
-        // stage('Start Application') {
-        //     steps {
-        //         // Add commands to start your backend service
-        //     }
-        // }
-
         stage('Build & Test') {
             steps {
-                bat 'mvn clean verify -DbaseURL="http://localhost:3000/"'
+                // Ignore failures to ensure the build continues to reporting
+                bat 'mvn clean verify -DbaseURL="%BASE_URL%" -Dsurefire.testFailureIgnore=true'
+            }
+        }
+
+        stage('Generate Allure Report') {
+            steps {
+                bat 'allure generate target\\allure-results -o target\\allure-report --clean'
             }
         }
     }
