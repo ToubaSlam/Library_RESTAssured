@@ -7,13 +7,13 @@ pipeline {
     }
 
     stages {
-        stage('Checkout Code') {
+        stage('Get Code') {
             steps {
                 git changelog: false, poll: false, url: 'https://github.com/ToubaSlam/Library_RESTAssured.git', branch: 'master'
             }
         }
 
-        stage('Run Tests') {
+        stage('Build & Test') {
             steps {
                 bat 'mvn clean verify -DbaseURL="http://localhost:3000/"'
             }
@@ -28,14 +28,7 @@ pipeline {
 
     post {
         always {
-            junit '**/target/surefire-reports/*.xml' // Publish test results to Jenkins UI
-            archiveArtifacts artifacts: 'target/allure-report/**', fingerprint: true
-        }
-        failure {
-            echo '⚠️ Tests failed! Please check the logs above or the Allure report for more details.'
-        }
-        success {
-            echo '✅ All tests passed successfully!'
+            allure includeProperties: false, jdk: 'JDK_11', results: [[path: 'target/allure-results']]
         }
     }
 }
