@@ -2,38 +2,40 @@ pipeline {
     agent any
 
     tools {
-        maven 'Maven_3.8.5' // Ensure this matches your configured Maven tool name
-        jdk 'JDK_11'        // Ensure this matches your configured JDK tool name
-    }
-
-    environment {
-        BASE_URL = "http://localhost:3000"
+        maven 'Maven_3.8.5'
+        jdk 'JDK_11'
     }
 
     stages {
-        stage('Get Code') {
+        stage('Checkout Code') {
             steps {
                 git changelog: false, poll: false, url: 'https://github.com/ToubaSlam/Library_RESTAssured.git', branch: 'master'
             }
         }
 
-        stage('Build & Test') {
+        stage('Run Tests') {
             steps {
-                // Ignore failures to ensure the build continues to reporting
-                bat 'mvn clean verify -DbaseURL="%BASE_URL%" -Dsurefire.testFailureIgnore=true'
+                bat 'mvn clean verify -DbaseURL="http://localhost:3000/"'
             }
         }
 
         stage('Generate Allure Report') {
             steps {
-                bat 'allure generate target\\allure-results -o target\\allure-report --clean'
+                bat 'allure generate target/allure-results -o target/allure-report --clean'
             }
         }
     }
 
     post {
         always {
-            allure includeProperties: false, jdk: 'JDK_11', results: [[path: 'target/allure-results']]
+            junit '**/target/surefire-reports/*.xml' // Publish test results to Jenkins UI
+            archiveArtifacts artifacts: 'target/allure-report/**', fingerprint: true
+        }
+        failure {
+            echo '⚠️ Tests failed! Please check the logs above or the Allure report for more details.'
+        }
+        success {
+            echo '✅ All tests passed successfully!'
         }
     }
 }
