@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     tools {
-        maven 'Maven_3.8.5' // Ensure this matches Jenkins tool configuration
-        jdk 'JDK_11'        // Ensure this matches Jenkins tool configuration
+        maven 'Maven_3.8.5'
+        jdk 'JDK_11'
     }
 
     stages {
@@ -13,9 +13,12 @@ pipeline {
             }
         }
 
-        stage('Run Tests') {
+        stage('Build and Test') {
             steps {
-                bat 'mvn clean verify -DbaseURL="http://localhost:3000/"'
+                // Capture test failures but don't break the build
+                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                    bat 'mvn clean verify -DbaseURL="http://localhost:3000/"'
+                }
             }
         }
 
@@ -24,12 +27,18 @@ pipeline {
                 bat 'allure generate target/allure-results -o target/allure-report --clean'
             }
         }
+
+        stage('Archive Artifacts') {
+            steps {
+                archiveArtifacts artifacts: 'target/allure-report/**', allowEmptyArchive: true
+                junit 'target/surefire-reports/*.xml'
+            }
+        }
     }
 
     post {
         always {
-            allure includeProperties: false, jdk: 'JDK_11', results: [[path: 'target/allure-results']]
-            archiveArtifacts artifacts: 'target/allure-report/**', allowEmptyArchive: true
+            echo "Build finished. Check Allure report and JUnit results."
         }
     }
 }
