@@ -22,11 +22,6 @@ pipeline {
             }
         }
 
-     stage('Generate Allure Report') {
-    steps {
-        bat 'allure generate target/allure-results -o target/allure-report --clean'
-    }
-}
 
         stage('Archive Artifacts') {
             steps {
