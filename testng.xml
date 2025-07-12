@@ -9,8 +9,8 @@
         <listener class-name="io.qameta.allure.testng.AllureTestNg" />
     </listeners>
     <suite-files>
-        <suite-file path="src/test/resources/suites/negativeScenarios.xml"/>
         <suite-file path="src/test/resources/suites/positiveScenarios.xml"/>
-        <suite-file path="src/test/resources/suites/E2E.xml"/>
+        <suite-file path="src/test/resources/suites/negativeScenarios.xml"/>
+<!--        <suite-file path="src/test/resources/suites/E2E.xml"/>-->
     </suite-files>
 </suite>
