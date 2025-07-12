@@ -1,7 +1,14 @@
 # 📚 Library REST API Automation with Java + Rest-Assured
 
 This project automates end-to-end API testing for a dynamic Library System. Using Java and Rest-Assured, it simulates a real-world API test environment covering CRUD operations for books, users, households, and wishlists.
+---
 
+## 🎬 Examples of Run
+
+Take a look at a local execution demo below!  
+![Local Testing Execution Example](Rec.gif)
+
+---
 ## ✨ Features Covered
 
 ### ✅ Books
