@@ -1,0 +1,72 @@
+name: Java CI
+
+on:
+  push:
+  schedule:
+    - cron: '0 0 * * 0'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 11 and Cache Maven packages
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '11'
+          cache: 'maven'
+
+      - name: Build and Test with Maven
+        run: mvn clean verify -DbaseURL="http://localhost:3000/"
+
+      - name: Install Allure CLI
+        run: |
+          wget https://github.com/allure-framework/allure2/releases/download/2.27.0/allure-2.27.0.tgz
+          tar -zxvf allure-2.27.0.tgz
+          sudo mv allure-2.27.0 /opt/allure
+          sudo ln -s /opt/allure/bin/allure /usr/bin/allure
+          allure --version
+
+      - name: Generate Allure Report
+        run: allure generate target/allure-results -o target/allure-report --clean
+
+      - name: Deploy Allure report to GitHub Pages
+        if: always()
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          personal_token: ${{ secrets.GH_PAGES_TOKEN }}
+          publish_dir: target/allure-report
+          publish_branch: gh-pages
+
+      - name: Send email notification
+        if: always()
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ secrets.EMAIL_USERNAME }}
+          password: ${{ secrets.EMAIL_PASSWORD }}
+          subject: "Allure Report"
+          to: ${{ secrets.EMAIL_TO }}
+          from: ${{ secrets.EMAIL_FROM }}
+          body: |
+            The Allure report has been generated and deployed to GitHub Pages.
+
+      - name: Upload Surefire reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: surefire-reports
+          path: target/surefire-reports
+
+      - name: Upload Allure report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-report
+          path: target/allure-report
