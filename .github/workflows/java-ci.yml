@@ -1,10 +1,10 @@
-name: Java CI
+name: Java CI for REST Assured + Allure
 
 on:
   push:
     branches: [ "master" ]
   schedule:
-    - cron: '0 0 * * 0'  # Weekly Sunday run
+    - cron: '0 0 * * 0'
   workflow_dispatch:
 
 jobs:
@@ -15,14 +15,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up JDK 11 with Maven cache
+      - name: Set up JDK 11 and Cache Maven packages
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '11'
           cache: 'maven'
 
-      - name: Build and Run Tests
+      - name: Build and Test with Maven
         run: mvn clean verify -DbaseURL="http://localhost:3000/"
 
       - name: Install Allure CLI
@@ -31,6 +31,7 @@ jobs:
           tar -zxvf allure-2.27.0.tgz
           sudo mv allure-2.27.0 /opt/allure
           sudo ln -s /opt/allure/bin/allure /usr/bin/allure
+          allure --version
 
       - name: Generate Allure Report
         run: allure generate target/allure-results -o target/allure-report --clean
@@ -50,22 +51,20 @@ jobs:
           server_port: 465
           username: ${{ secrets.EMAIL_USERNAME }}
           password: ${{ secrets.EMAIL_PASSWORD }}
-          subject: "📊 Allure Report Notification"
+          subject: "Allure Report - REST Assured Test Results"
           to: ${{ secrets.EMAIL_TO }}
           from: ${{ secrets.EMAIL_FROM }}
           body: |
-            ✅ Java & REST-Assured tests finished.
-            📄 Allure report was generated and deployed to GitHub Pages.
-            🔗 View Report (if configured): https://<your-username>.github.io/<repo-name>
+            The Allure report has been generated and deployed to GitHub Pages.
 
-      - name: Upload Surefire Reports
+      - name: Upload Surefire reports
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: surefire-reports
           path: target/surefire-reports
 
-      - name: Upload Allure Report
+      - name: Upload Allure report
         if: always()
         uses: actions/upload-artifact@v4
         with:
