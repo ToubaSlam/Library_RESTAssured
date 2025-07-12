@@ -52,7 +52,7 @@ jobs:
           username: ${{ secrets.EMAIL_USERNAME }}
           password: ${{ secrets.EMAIL_PASSWORD }}
           subject: "Allure Report - REST Assured Test Results"
-          to: ${{ secrets.EMAIL_TO }}
+          to: islamtoba@gmail.com
           from: islamtoba@gmail.com
           body: |
             The Allure report has been generated and deployed to GitHub Pages.
