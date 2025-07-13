@@ -1,0 +1,32 @@
+<div>POST to http://localhost:3000/books/</div>
+
+    <h4>Body</h4>
+    <div>
+    <pre class="preformated-text">
+{
+    &quot;title&quot;: &quot;Book-f4cc3bda&quot;,
+    &quot;author&quot;: &quot;Author-6b800&quot;,
+    &quot;isbn&quot;: &quot;8184674973083&quot;,
+    &quot;releaseDate&quot;: &quot;2025-02-03&quot;
+}    </pre>
+    </div>
+
+    <h4>Headers</h4>
+    <div>
+            <div>g-token: ROM831ESV</div>
+            <div>Accept: */*</div>
+            <div>Content-Type: application/json</div>
+    </div>
+
+
+
+    <h4>Curl</h4>
+    <div>
+        curl -v -X POST &#39;http://localhost:3000/books/&#39; -H &#39;g-token: ROM831ESV&#39; -H &#39;Accept: */*&#39; -H &#39;Content-Type: application/json&#39; -d &#39;{
+    &quot;title&quot;: &quot;Book-f4cc3bda&quot;,
+    &quot;author&quot;: &quot;Author-6b800&quot;,
+    &quot;isbn&quot;: &quot;8184674973083&quot;,
+    &quot;releaseDate&quot;: &quot;2025-02-03&quot;
+}&#39;
+    </div>
+
