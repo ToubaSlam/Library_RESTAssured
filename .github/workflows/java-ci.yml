@@ -37,11 +37,12 @@ jobs:
         run: allure generate target/allure-results -o target/allure-report --clean
 
       - name: Deploy Allure report to GitHub Pages
-        if: always()
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: target/allure-report
+  if: always()
+  uses: peaceiris/actions-gh-pages@v3
+  with:
+    personal_token: ${{ secrets.PERSONAL_TOKEN }}
+    publish_dir: target/allure-report
+
 
       - name: Send email notification
         if: always()
