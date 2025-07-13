@@ -44,20 +44,20 @@ jobs:
     publish_dir: target/allure-report
 
 
-      - name: Send email notification
-        if: always()
-        uses: dawidd6/action-send-mail@v3
-        with:
-          server_address: smtp.gmail.com
-          server_port: 465
-          username: ${{ secrets.EMAIL_USERNAME }}
-          password: ${{ secrets.EMAIL_PASSWORD }}
-          subject: "Allure Report - REST Assured Test Results"
-          to: islamtoba@gmail.com,stoba.dev@gmail.com
-          from: islamtoba@gmail.com
-          body: |
-            The Allure report has been generated and deployed to GitHub Pages.
-            Click to view the report or download the attached artifacts.
+     - name: Send email notification
+  if: always()
+  uses: dawidd6/action-send-mail@v3
+  with:
+    server_address: smtp.gmail.com
+    server_port: 465
+    username: ${{ secrets.EMAIL_USERNAME }}
+    password: ${{ secrets.EMAIL_PASSWORD }}
+    subject: "Allure Report - REST Assured Test Results"
+    to: ${{ secrets.EMAIL_TO }}
+    from: ${{ secrets.EMAIL_FROM }}
+    body: |
+      The Allure report has been generated and deployed to GitHub Pages.
+
 
       - name: Upload Surefire reports
         if: always()
