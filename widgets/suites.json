@@ -1,0 +1,1 @@
+{"total":2,"items":[{"uid":"9ea56135ce1f204338ae82147f2b9143","name":"Positive Scenarios","statistic":{"failed":0,"broken":32,"skipped":0,"passed":0,"unknown":0,"total":32}},{"uid":"9459bf4c7fb4f181416d454879e2ab1c","name":"Negative Scenarios","statistic":{"failed":0,"broken":13,"skipped":0,"passed":0,"unknown":0,"total":13}}]}
